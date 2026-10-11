@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hà Thị Lương Hoài</title>
+  <meta name="description" content="Hà Thị Lương Hoài – Thực tập sinh lập trình Java tại Hà Nội">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf7;
+      --surface: #ffffff;
+      --text: #1b1b1f;
+      --muted: #5f6370;
+      --border: #e6e4dd;
+      --accent: #e8572a;
+      --accent-soft: #fdeee8;
+      --radius: 16px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121214;
+        --surface: #1b1b1f;
+        --text: #f1f0ec;
+        --muted: #a3a3ad;
+        --border: #2c2c32;
+        --accent: #ff7a4d;
+        --accent-soft: #2a1b16;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Be Vietnam Pro", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    nav .logo { font-weight: 800; text-decoration: none; }
+    nav .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 24px; list-style: none; }
+    nav ul a { text-decoration: none; color: var(--muted); font-size: 15px; }
+    nav ul a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero { padding: 96px 0 72px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent); font-weight: 500; font-size: 14px;
+    }
+    .hero h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.1; margin: 18px 0; font-weight: 800; letter-spacing: -0.02em; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p { color: var(--muted); font-size: 18px; max-width: 540px; }
+    .avatar {
+      width: 220px; height: 220px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #f7b267);
+      display: grid; place-items: center; font-size: 80px; font-weight: 800; color: #fff;
+      box-shadow: 0 20px 50px -20px var(--accent);
+    }
+    .btns { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 22px; border-radius: 999px; text-decoration: none; font-weight: 500;
+      border: 1px solid var(--border); transition: transform .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Sections */
+    section { padding: 64px 0; border-top: 1px solid var(--border); }
+    section h2 { font-size: 28px; margin-bottom: 28px; letter-spacing: -0.01em; }
+    section h2::before { content: "# "; color: var(--accent); }
+    .about p { color: var(--muted); font-size: 17px; max-width: 720px; margin-bottom: 14px; }
+
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 28px; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .stat b { display: block; font-size: 32px; color: var(--accent); }
+    .stat span { color: var(--muted); font-size: 14px; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skills span {
+      padding: 8px 16px; border-radius: 999px; background: var(--surface);
+      border: 1px solid var(--border); font-size: 15px;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .card .emoji { font-size: 28px; }
+    .card h3 { margin: 10px 0 6px; font-size: 18px; }
+    .card p { color: var(--muted); font-size: 15px; }
+    .card a { display: inline-block; margin-top: 12px; color: var(--accent); font-weight: 500; text-decoration: none; }
+
+    .timeline { list-style: none; border-left: 2px solid var(--border); padding-left: 24px; }
+    .timeline li { position: relative; margin-bottom: 28px; }
+    .timeline li::before {
+      content: ""; position: absolute; left: -31px; top: 8px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+    }
+    .timeline .time { font-size: 14px; color: var(--accent); font-weight: 500; }
+    .timeline h3 { font-size: 18px; }
+    .timeline p { color: var(--muted); font-size: 15px; }
+
+    .contact { text-align: center; }
+    .contact h2::before { content: ""; }
+    .contact p { color: var(--muted); margin-bottom: 24px; }
+    .contact .btns { justify-content: center; }
+
+    footer { padding: 32px 0; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
+
+    @media (max-width: 720px) {
+      nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 56px; }
+      .avatar { width: 140px; height: 140px; font-size: 52px; order: -1; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a href="#" class="logo">Hoài<span>.</span></a>
+      <ul>
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#goals">Mục tiêu</a></li>
+        <li><a href="#education">Học vấn</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <div>
+        <span class="tag">☕ Thực tập sinh lập trình Java</span>
+        <h1>Xin chào, mình là <em>Hà Thị Lương Hoài</em></h1>
+        <p>Sinh viên Công nghệ phần mềm – Đại học Mở Hà Nội. Mình điềm tĩnh, thích ứng nhanh và luôn hứng thú với việc tìm ra hướng giải quyết cho mọi vấn đề.</p>
+        <div class="btns">
+          <a class="btn primary" href="#contact">Liên hệ với mình</a>
+          <a class="btn" href="#skills">Xem kỹ năng</a>
+        </div>
+      </div>
+      <div class="avatar">H</div>
+    </header>
+
+    <section id="about" class="about">
+      <h2>Giới thiệu</h2>
+      <p>Mình là một người điềm tĩnh, thích ứng nhanh với môi trường mới và không ngại khó khăn. Điều khiến mình hứng thú nhất trong lập trình là quá trình tìm ra hướng giải quyết cho một vấn đề.</p>
+      <p>Mình thân thiện, nhiệt tình, thật thà và cẩn thận; thích tìm tòi, học hỏi và giúp đỡ mọi người xung quanh.</p>
+      <div class="stats">
+        <div class="stat"><b>📍</b><span>Hoàng Mai, Hà Nội</span></div>
+        <div class="stat"><b>🎓</b><span>Công nghệ phần mềm – ĐH Mở Hà Nội</span></div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Kỹ năng</h2>
+      <div class="skills">
+        <span>Java</span>
+        <span>SQL</span>
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Tiếng Anh</span>
+        <span>Tin học văn phòng</span>
+        <span>Giao tiếp</span>
+      </div>
+    </section>
+
+    <section id="goals">
+      <h2>Mục tiêu nghề nghiệp</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="emoji">🌱</div>
+          <h3>Ngắn hạn</h3>
+          <p>Tiếp cận môi trường làm việc thực tế, không ngừng học tập để nâng cao kiến thức và bản lĩnh nghề nghiệp, sẵn sàng nắm bắt mọi cơ hội phát triển.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🎯</div>
+          <h3>Trong công việc</h3>
+          <p>Hoàn thành tốt vị trí được giao, tích luỹ kinh nghiệm và rèn luyện kỹ năng xử lý công việc hiệu quả, chính xác, nhanh chóng.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🚀</div>
+          <h3>Dài hạn</h3>
+          <p>Trở thành nhân viên chính thức và tiếp tục phát triển trên con đường lập trình viên Java.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Học vấn &amp; Kinh nghiệm</h2>
+      <ul class="timeline">
+        <li>
+          <div class="time">01/2021 — Hiện tại</div>
+          <h3>Kinh nghiệm</h3>
+          <p>Học tập và thực hành lập trình Java, SQL và phát triển web (HTML, CSS, JavaScript).</p>
+        </li>
+        <li>
+          <div class="time">Đại học</div>
+          <h3>Trường Đại học Mở Hà Nội · Khoa Công nghệ thông tin</h3>
+          <p>Chuyên ngành Công nghệ phần mềm · GPA tích luỹ: 2.65/4</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Cùng trò chuyện nhé! ☕</h2>
+      <p>Mình đang tìm kiếm cơ hội thực tập lập trình Java. Rất mong được kết nối với bạn!</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:hoai391998@gmail.com">✉️ hoai391998@gmail.com</a>
+        <a class="btn" href="https://facebook.com/hoai.haluong/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Hà Thị Lương Hoài · Làm với ❤️
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

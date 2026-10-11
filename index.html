@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="vi">
+<!-- Comment -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -121,6 +122,39 @@
     .contact p { color: var(--muted); margin-bottom: 24px; }
     .contact .btns { justify-content: center; }
 
+    .review-score {
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; margin-bottom: 18px;
+    }
+    .review-score .big { font-size: 56px; font-weight: 800; color: var(--accent); line-height: 1; }
+    .review-score .big small { font-size: 22px; color: var(--muted); font-weight: 500; }
+    .review-score p { color: var(--muted); max-width: 520px; }
+    .meter { position: relative; display: inline-block; font-size: 22px; letter-spacing: 3px; line-height: 1; color: var(--border); }
+    .meter::before { content: "★★★★★"; }
+    .meter span { position: absolute; inset: 0 auto 0 0; overflow: hidden; white-space: nowrap; color: #f5b301; }
+    .meter span::before { content: "★★★★★"; }
+    .criteria { list-style: none; display: grid; gap: 12px; }
+    .criteria li {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px 20px; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center;
+    }
+    .criteria h3 { font-size: 16px; }
+    .criteria p { grid-column: 1 / -1; color: var(--muted); font-size: 15px; }
+
+    .rating { text-align: center; }
+    .rating h2::before { content: ""; }
+    .rating > p { color: var(--muted); margin-bottom: 20px; }
+    .stars { display: inline-flex; gap: 6px; }
+    .stars button {
+      background: none; border: none; cursor: pointer; padding: 4px;
+      font-size: 40px; line-height: 1; color: var(--border); transition: transform .15s, color .15s;
+    }
+    .stars button:hover { transform: scale(1.15); }
+    .stars button.on { color: #f5b301; }
+    .stars button:focus-visible { outline: 2px solid var(--accent); border-radius: 8px; }
+    .rating-msg { margin-top: 12px; min-height: 1.6em; font-weight: 500; }
+
     footer { padding: 32px 0; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
 
     @media (max-width: 720px) {
@@ -140,6 +174,7 @@
         <li><a href="#skills">Kỹ năng</a></li>
         <li><a href="#goals">Mục tiêu</a></li>
         <li><a href="#education">Học vấn</a></li>
+        <li><a href="#review">Đánh giá</a></li>
         <li><a href="#contact">Liên hệ</a></li>
       </ul>
     </div>
@@ -220,6 +255,62 @@
       </ul>
     </section>
 
+    <section id="review">
+      <h2>Đánh giá CV</h2>
+      <div class="review-score">
+        <div class="big">2.8<small>/5</small></div>
+        <div>
+          <span class="meter" role="img" aria-label="2.8/5 sao"><span style="width:56%"></span></span>
+          <p>Tạm ổn. CV có thông tin cá nhân đầy đủ và thái độ tốt, nhưng còn thiếu kinh nghiệm, dự án và chi tiết kỹ năng, nên chưa đủ sức thuyết phục cho vị trí thực tập Java.</p>
+        </div>
+      </div>
+      <ul class="criteria">
+        <li>
+          <h3>Thông tin liên hệ</h3>
+          <span class="meter" role="img" aria-label="5/5 sao"><span style="width:100%"></span></span>
+          <p>Đầy đủ: họ tên, vị trí ứng tuyển, số điện thoại, email, địa chỉ, Facebook.</p>
+        </li>
+        <li>
+          <h3>Tóm tắt &amp; mục tiêu nghề nghiệp</h3>
+          <span class="meter" role="img" aria-label="3/5 sao"><span style="width:60%"></span></span>
+          <p>Rõ ràng nhưng còn chung chung. Nên nói cụ thể muốn học gì về Java (Spring Boot, REST API…) và sẽ đóng góp gì cho công ty.</p>
+        </li>
+        <li>
+          <h3>Kỹ năng</h3>
+          <span class="meter" role="img" aria-label="2/5 sao"><span style="width:40%"></span></span>
+          <p>Chỉ liệt kê tên, chưa có mức độ thành thạo. Còn thiếu các kỹ năng nhà tuyển dụng Java hay hỏi: OOP, Spring/Spring Boot, Git, MySQL/SQL Server.</p>
+        </li>
+        <li>
+          <h3>Học vấn</h3>
+          <span class="meter" role="img" aria-label="3/5 sao"><span style="width:60%"></span></span>
+          <p>Có trường, khoa, chuyên ngành. Thiếu năm bắt đầu và năm tốt nghiệp. GPA 2.65/4 ở mức trung bình, có thể bỏ hoặc bù bằng đồ án tốt.</p>
+        </li>
+        <li>
+          <h3>Kinh nghiệm &amp; dự án</h3>
+          <span class="meter" role="img" aria-label="1/5 sao"><span style="width:20%"></span></span>
+          <p>Mục kinh nghiệm chỉ có mốc thời gian "01/01/2021 – Hiện tại" mà không có nội dung, và chưa có dự án nào. Đây là phần quan trọng nhất với vị trí thực tập.</p>
+        </li>
+        <li>
+          <h3>Trình bày &amp; chính tả</h3>
+          <span class="meter" role="img" aria-label="3/5 sao"><span style="width:60%"></span></span>
+          <p>Bố cục gọn, dễ đọc. Còn lỗi chính tả: "môi trường mời" (mới), "JAVASCRIP" (JavaScript).</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="rating" class="rating">
+      <h2>Bạn đánh giá CV này thế nào? ⭐</h2>
+      <p>Chọn từ 1 đến 5 sao để cho mình biết CV này tốt hay chưa nhé.</p>
+      <div class="stars" role="radiogroup" aria-label="Đánh giá CV">
+        <button type="button" data-v="1" role="radio" aria-label="1 sao">★</button>
+        <button type="button" data-v="2" role="radio" aria-label="2 sao">★</button>
+        <button type="button" data-v="3" role="radio" aria-label="3 sao">★</button>
+        <button type="button" data-v="4" role="radio" aria-label="4 sao">★</button>
+        <button type="button" data-v="5" role="radio" aria-label="5 sao">★</button>
+      </div>
+      <div class="rating-msg" aria-live="polite"></div>
+    </section>
+
     <section id="contact" class="contact">
       <h2>Cùng trò chuyện nhé! ☕</h2>
       <p>Mình đang tìm kiếm cơ hội thực tập lập trình Java. Rất mong được kết nối với bạn!</p>
@@ -236,6 +327,28 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    const LABELS = ["", "Rất tệ 😢", "Chưa tốt 😕", "Tạm ổn 🙂", "Tốt 😊", "Xuất sắc 🤩"];
+    const starBtns = document.querySelectorAll(".stars button");
+    const ratingMsg = document.querySelector(".rating-msg");
+    let rating = 0;
+    try { rating = Number(localStorage.getItem("cv-rating")) || 0; } catch (e) {}
+
+    function paint(n) {
+      starBtns.forEach(b => b.classList.toggle("on", Number(b.dataset.v) <= n));
+    }
+    function select(n) {
+      rating = n;
+      paint(n);
+      starBtns.forEach(b => b.setAttribute("aria-checked", Number(b.dataset.v) === n));
+      ratingMsg.textContent = n ? `Bạn đã đánh giá ${n}/5 sao – ${LABELS[n]}. Cảm ơn bạn!` : "";
+      try { localStorage.setItem("cv-rating", n); } catch (e) {}
+    }
+    starBtns.forEach(b => {
+      b.addEventListener("mouseenter", () => paint(Number(b.dataset.v)));
+      b.addEventListener("mouseleave", () => paint(rating));
+      b.addEventListener("click", () => select(Number(b.dataset.v)));
+    });
+    if (rating) select(rating);
   </script>
 </body>
 </html>
